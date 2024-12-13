@@ -5,12 +5,15 @@ import string
 import sys
 import lorem
 from utils import ProgressBar, Spinner
+from Encryptor import Encryptor
 
 # Constants
 NUM_FILES = 10000  # Number of file pairs to generate
 OUTPUT_DIR = "Training"
 DECRYPTED_DIR = os.path.join(OUTPUT_DIR, "decrypted")
 ENCRYPTED_DIR = os.path.join(OUTPUT_DIR, "encrypted")
+
+
 
 # Function to generate random text
 def generate_random_text(length=50):
@@ -44,6 +47,7 @@ def generate_files():
     spinner.start()
     try:
         public_key, private_key = generate_rsa_keys()
+        encr = Encryptor(public_key)
     finally:
         spinner.stop()
     pb = ProgressBar(NUM_FILES, 50, f"Generating {OUTPUT_DIR} Data")
@@ -61,7 +65,7 @@ def generate_files():
         encrypted_path = os.path.join(ENCRYPTED_DIR, f"{file_id}.enc")
 
         # Encrypt the random text
-        encrypted_text = encrypt_text(random_text, public_key)
+        encrypted_text = encr.encrypt_text(random_text, "rsa")
 
         # Save the files
         save_to_file(decrypted_path, random_text)
