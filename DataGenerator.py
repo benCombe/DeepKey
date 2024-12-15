@@ -58,7 +58,10 @@ def generate_files():
         random_text = generate_random_text()
 
         # File identifiers
-        file_id = f"tr_{i:05d}"
+        if OUTPUT_DIR == "Training":
+            file_id = f"tr_{i:05d}"
+        elif OUTPUT_DIR =="Testing":
+            file_id = f"te_{i:05d}"
 
         # File paths
         decrypted_path = os.path.join(DECRYPTED_DIR, f"{file_id}.dec")
