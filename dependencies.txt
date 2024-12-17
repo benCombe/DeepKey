@@ -1,3 +1,5 @@
 rsa
 pycryptodome
 lorem
+tensorflow
+numpy
