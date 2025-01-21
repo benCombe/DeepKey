@@ -1,5 +1,5 @@
 # DeepKey
-Research Project on the use of Deep Learning Neural Networks for RSA decryption
+Research Project on the use of Deep Learning Neural Networks for RSA and XOR decryption
 
 
 -- Setup -- 
